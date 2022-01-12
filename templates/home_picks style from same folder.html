@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Marketo Email Performance Predictor</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href='styles.css') >
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Marketo Email Performance Forecast</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      
+       
+        <label for="Area">Select Marketing Area:</label>
+        <select name="Area" id="Area"> 
+        <option value="ANZ">ANZ</option>
+        </select>
+        <br>
+
+    <script>    
+var subjectObject = {
+
+
+"1.Business Applications": {
+    "1.Build a Resilient Supply Chain": [],
+    "2.Rapidly Build Apps": [],
+    "3.Activate Digital Selling": [],
+    "4.Enable Always-On Service": [],
+    "5.Discover Business Insights": [],
+    "6.Automate Business Processes": [],
+    "7.Connected Commerce": [],
+    "8.Optimize Financial and Operating Models": []
+    
+  },
+
+ "2.Data and AI": {
+    "9.Innovate with AI": [],
+    "10.Win with Analytics": []
+    
+  },
+
+
+ "3.Digital and Application Innovation": {
+    "11.Developer Engagement": [],
+    "12.Azure App Innovation": [],
+    "13.Modernize NET and Java Apps": [],
+    "14.Drive DevOps Adoption": [],
+    "15.ISV Recruit": []
+  },
+
+ "4.Digital Transformation and Industry": {
+    "16.Education": [],
+    "17.Retail": [],
+    "18.Digital Transformation": [],
+    "19.Financial Services": [],
+    "20.Healthcare": [],
+    "21.Manufacturing": []
+  },
+
+ "5.Infrastructure": {
+    "22.Azure Migration and Modernization": [],
+    "23.Azure Hybrid and Infrastructure": [],
+    "24.Migrate Windows and SQL Server": [],
+    "25.Modernize VDI to Azure Virtual Desktop": []
+  },
+
+ "6.Modern Work": {
+    "26.Employee Experience": [],
+    "27.Hybrid Meetings": [],
+    "28.Modernize Endpoints": [],
+    "29.Surface Broad Reach": [],
+    "30.Refresh Your Devices": [],
+    "31.Transition to Cloud": [],
+    "32.Microsoft 365 Deployment": []
+  },
+
+ "7.Security": {
+    "33.Modernize Security and Defend Against Threats": [],
+    "34.Security Broad Reach": [],
+    "35.Build Zero Trust Foundations": [],
+    "36.Compliance": []
+  }
+
+ 
+}
+window.onload = function() {
+  var solutionareaSel = document.getElementById("solutionarea");
+  var playSel = document.getElementById("play");
+ 
+  for (var x in subjectObject) {
+    solutionareaSel.options[solutionareaSel.options.length] = new Option(x, x);
+  }
+  solutionareaSel.onchange = function() {
+    //empty Chapters- and Topics- dropdowns
+    playSel.length = 1;
+   
+    //display correct values
+    for (var y in subjectObject[this.value]) {
+      playSel.options[playSel.options.length] = new Option(y, y);
+    }
+  }
+
+}
+</script>
+</head>   
+<body>
+
+<form name="form1" id="form1" action="/action_page.php">
+
+ Select Solution Area: <select name="solutionarea" id="solutionarea">
+    <option value="" selected="selected">Select subject</option>
+  </select>
+  <br>
+ Select Marketing Play: <select name="play" id="play">
+    <option value="" selected="selected">Please select solution area first</option>
+  </select>
+  <br>
+  <br>
+
+ <label for="countemail">Enter Planned # of Emails:</label> <br> <input type="text" name="Sent" placeholder="# of Emails Planned for Deployment" required="required" /><br>
+ 
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+ </form>
+
+   <br>
+   <br>
+  <h2> {{prediction_text}}</h2>
+  <h3> {{prediction_text_click}}</h3>
+ </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html >
+<!-- This is a HTML master created by JayantKodwani.com -->
+<head>
+  <meta charset="UTF-8">
+  <title>Marketo Email Performance Predictor</title>
+
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='1styles.css') }}">
+  
+</head>
+
+<body>
+
+<!-- Adding Image -->
+<img itemprop="logo" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" position: relative; top:35px; left: 20px;>
+<br>
+<!-- Select Single File -->
+<br>
+  <label for="myfile">Select a file:</label>
+  <input type="file" id="myfile" name="myfile"><br>
+<br>
+<!-- Select Multiple Files -->
+
+  <label for="myfile">Select multiple files:</label>
+  <input type="file" id="myfile" name="myfile" multiple><br>
+<br>
+  <label for="fname">Enter Text:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+
+<br>
+<!-- Add Radio Buttons -->
+  <input type="radio" id="Replace_option1" name="fav_language" value="Replace_option1">
+  <label for="Replace_option1">Replace_option1</label><br>
+  <input type="radio" id="Replace_option2" name="fav_language" value="Replace_option2">
+  <label for="Replace_option2">Replace_option2</label><br>
+
+<br>
+<!-- Add Checkboxes -->
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+<br>
+
+<!-- Add Radio Buttons -->
+
+  <label for="birthday">Birthday:</label>
+  <input type="date" id="birthday" name="birthday" min="1985-12-01" max="2022-01-05">
+
+<br>
+<!-- Add Email -->
+
+<label for="email">Enter your email:</label>
+<input type="email" id="email" name="email">
+
+<!-- Add Emoji -->
+<meta charset="UTF-8"> <p>&#128512;</p>
+
+<!-- Add Radio Buttons -->
+
+
+<!-- Add Radio Buttons -->
+
+
+<!-- Add Radio Buttons -->
+
+
+
+  <input type="submit">
+
+ <div class="login">
+<br>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      
+       
+        <label for="Area">Select Marketing Area:</label>
+        <select name="Area" id="Area"> 
+        <option value="ANZ">ANZ</option>
+        </select>
+        <br>
+
+    <script>    
+var subjectObject = {
+
+
+"1.Business Applications": {
+    "1.Build a Resilient Supply Chain": [],
+    "2.Rapidly Build Apps": [],
+    "3.Activate Digital Selling": [],
+    "4.Enable Always-On Service": [],
+    "5.Discover Business Insights": [],
+    "6.Automate Business Processes": [],
+    "7.Connected Commerce": [],
+    "8.Optimize Financial and Operating Models": []
+    
+  },
+
+ "2.Data and AI": {
+    "9.Innovate with AI": [],
+    "10.Win with Analytics": []
+    
+  },
+
+
+ "3.Digital and Application Innovation": {
+    "11.Developer Engagement": [],
+    "12.Azure App Innovation": [],
+    "13.Modernize NET and Java Apps": [],
+    "14.Drive DevOps Adoption": [],
+    "15.ISV Recruit": []
+  },
+
+ "4.Digital Transformation and Industry": {
+    "16.Education": [],
+    "17.Retail": [],
+    "18.Digital Transformation": [],
+    "19.Financial Services": [],
+    "20.Healthcare": [],
+    "21.Manufacturing": []
+  },
+
+ "5.Infrastructure": {
+    "22.Azure Migration and Modernization": [],
+    "23.Azure Hybrid and Infrastructure": [],
+    "24.Migrate Windows and SQL Server": [],
+    "25.Modernize VDI to Azure Virtual Desktop": []
+  },
+
+ "6.Modern Work": {
+    "26.Employee Experience": [],
+    "27.Hybrid Meetings": [],
+    "28.Modernize Endpoints": [],
+    "29.Surface Broad Reach": [],
+    "30.Refresh Your Devices": [],
+    "31.Transition to Cloud": [],
+    "32.Microsoft 365 Deployment": []
+  },
+
+ "7.Security": {
+    "33.Modernize Security and Defend Against Threats": [],
+    "34.Security Broad Reach": [],
+    "35.Build Zero Trust Foundations": [],
+    "36.Compliance": []
+  }
+
+ 
+}
+window.onload = function() {
+  var solutionareaSel = document.getElementById("solutionarea");
+  var playSel = document.getElementById("play");
+ 
+  for (var x in subjectObject) {
+    solutionareaSel.options[solutionareaSel.options.length] = new Option(x, x);
+  }
+  solutionareaSel.onchange = function() {
+    //empty Chapters- and Topics- dropdowns
+    playSel.length = 1;
+   
+    //display correct values
+    for (var y in subjectObject[this.value]) {
+      playSel.options[playSel.options.length] = new Option(y, y);
+    }
+  }
+
+}
+</script>
+</head>   
+<body>
+
+<form name="form1" id="form1" action="/action_page.php">
+
+ Select Solution Area: <select name="solutionarea" id="solutionarea">
+    <option value="" selected="selected">Select subject</option>
+  </select>
+  <br>
+ Select Marketing Play: <select name="play" id="play">
+    <option value="" selected="selected">Please select solution area first</option>
+  </select>
+  <br>
+  <br>
+
+
+
+
+ </form>
+
+   <br>
+   <br>
+
+ </div>
+
+
+</body>
+
+</html>
